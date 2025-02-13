@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/png" href="assets/Logo.png">
+
+
+  <title>UI Evolution</title>
+  <meta charset="UTF-8" />
+  <style>
+    .message {
+      margin-bottom: 1rem;
+    }
+
+    .message.user {
+      text-align: right;
+    }
+
+    .message.bot {
+      text-align: left;
+    }
+
+    .message p {
+      display: inline-block;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      max-width: 70%;
+    }
+
+    .message.user p {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    .message.bot p {
+      background-color: #e9ecef;
+      color: #333;
+    }
+
+    .generated-image {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  
+  <app-root>Loading...</app-root>
+  <script>
+    function generateImage() {
+      const input = document.getElementById('generator-input');
+      const prompt = input.value.trim();
+      if (prompt === '') return;
+
+      // Add user message to output
+      const generatorOutput = document.getElementById('generator-output');
+      const userMessage = document.createElement('div');
+      userMessage.className = 'message user';
+      userMessage.innerHTML = `<p>${prompt}</p>`;
+      generatorOutput.appendChild(userMessage);
+
+      // Clear input
+      input.value = '';
+
+      // Simulate bot response with a generated image
+      setTimeout(() => {
+        const botMessage = document.createElement('div');
+        botMessage.className = 'message bot';
+        botMessage.innerHTML = `<p>Here's your generated UI:</p>
+        <div *ngIf="imageUrl">
+          <img [src]="${imageUrl}" alt="Generated Image" class="generated-image">
+        </div>
+        `;
+        generatorOutput.appendChild(botMessage);
+
+        // Scroll to bottom
+        generatorOutput.scrollTop = generatorOutput.scrollHeight;
+      }, 1000);
+    }
+  </script>
+</body>
+
+</html>
