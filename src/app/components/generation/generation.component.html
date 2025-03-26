@@ -1,0 +1,36 @@
+<div class="generator-container">
+    <div class="generator-header">
+        <h2>UI Evolution</h2>
+        <p>Describe the image you want, and we'll generate it for you!</p>
+    </div>
+
+    <div class="generator-output" id="generator-output">
+        <div class="message bot">
+            <p>Hi!🖐🏻❤️<br>
+                How can i help you today?😊
+            </p>
+        </div>
+        <div *ngFor="let message of messages" class="message"
+            [ngClass]="{'user': message.isUser, 'bot': !message.isUser}">
+            <p>{{ message.text }}</p>
+            <br>
+            <img *ngIf="message.imageUrl" [src]="message.imageUrl" alt="Generated UI" style="width: 22rem; height: 38rem;">
+        </div>
+        <br>
+        <div *ngFor="let msg of satisfied" class="message" [ngClass]="{'bot': !msg.isUser}">
+            <p>{{ msg.text }}</p>
+            <div *ngIf="msg.buttons">
+                <button type="button" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-title="Tooltip on right" *ngFor="let btn of msg.buttons" [ngClass]="btn.class"
+                    [ngStyle]="btn.style" (click)="btn.action()">
+                    {{ btn.text }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <form class="generator-input">
+        <input type="text" id="generator-input" placeholder="Describe the image you want..." [(ngModel)]="userInput"
+            name="userInput">
+        <button type="button" (click)="fetchImage()" id="liveToastBtn">Generate</button>
+    </form>
+</div>

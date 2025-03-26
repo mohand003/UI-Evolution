@@ -1,0 +1,100 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.generator-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.generator-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.generator-header h2 {
+    font-weight: 700;
+    color: #3b82f6;
+}
+
+.generator-header p {
+    font-weight: 300;
+    color: white;
+}
+
+.generator-output {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    background-color: #f9f9f9;
+}
+
+.message {
+    margin-bottom: 1rem;
+}
+
+.message.user {
+    text-align: right;
+}
+
+.message.bot {
+    text-align: left;
+}
+
+.message p {
+    display: inline-block;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    max-width: 70%;
+}
+
+.message.user p {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.message.bot p {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+.generated-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.generator-input {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.generator-input input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.generator-input button {
+    padding: 0.75rem 1.5rem;
+    background-color: #3b82f6;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.generator-input button:hover {
+    background-color: #2563eb;
+}

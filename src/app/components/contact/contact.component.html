@@ -1,0 +1,52 @@
+<main style="padding: 4rem 0;">
+    <div class="container" style="max-width: 800px;">
+        <h1 style="font-size: 2.5rem; color:#3b82f6; margin-bottom: 1rem; text-align: center;">Get in Touch</h1>
+        <p style="text-align: center; color: white; margin-bottom: 3rem;">
+            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+        </p>
+
+        <div class="card">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()"
+                style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div>
+                    <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Name</label>
+                    <input placeholder="Enter Your Name Here....." id="name" type="text" formControlName="name"
+                        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem;"
+                        [ngStyle]="{'border-color': contactForm.get('name')?.touched && contactForm.get('name')?.invalid ? '#ef4444' : '#ddd'}">
+                    <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid"
+                        style="color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem;">
+                        Please enter your name
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
+                    <input placeholder="Enter Your Email Here....." id="email" type="email" formControlName="email"
+                        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem;"
+                        [ngStyle]="{'border-color': contactForm.get('email')?.touched && contactForm.get('email')?.invalid ? '#ef4444' : '#ddd'}">
+                    <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid"
+                        style="color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem;">
+                        Please enter a valid email address
+                    </div>
+                </div>
+
+                <div>
+                    <label for="message"
+                        style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Message</label>
+                    <textarea placeholder="Enter Your Message Here....." id="message" formControlName="message" rows="5"
+                        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; resize: vertical;"
+                        [ngStyle]="{'border-color': contactForm.get('message')?.touched && contactForm.get('message')?.invalid ? '#ef4444' : '#ddd'}"></textarea>
+                    <div *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid"
+                        style="color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem;">
+                        Please enter your message
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;"
+                    [disabled]="contactForm.invalid || submitting">
+                    {{ submitting ? 'Sending...' : 'Send Message' }}
+                </button>
+            </form>
+        </div>
+    </div>
+</main>

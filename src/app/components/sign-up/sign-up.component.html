@@ -1,0 +1,30 @@
+<div class="signup-container mb-5">
+    <img src="../../images/Logo.png" alt="LOGO">
+    <h2 class="text-center">Sign Up</h2>
+    <form (ngSubmit)="signUp()" [formGroup]="signUpForm">
+        <div class="mb-3">
+            <label for="name" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your first name" required
+                formControlName="name">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" required
+                formControlName="email">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter your password" required
+                formControlName="password">
+        </div>
+        <div class="mb-3">
+            <label for="confirm-password" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password"
+                required formControlName="confirmPassword">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+    <div class="signin-link">
+        Already have an account? <a routerLink="/sign-in">Sign In</a>
+    </div>
+</div>

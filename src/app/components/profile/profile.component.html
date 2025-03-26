@@ -1,0 +1,23 @@
+<div class="profile-container">
+    <div class="profile-card text-center">
+        <div class="profile-header">
+            <img [src]="user?.profilePicture || '../../images/Logo.png'" alt="Profile Picture" class="profile-picture">
+        </div>
+        <div class="profile-details">
+            <div class="detail-item">
+                <span class="detail-label">User Name:</span>
+                <span class="detail-value">{{ user?.name || "User Name"}}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Email:</span>
+                <span class="detail-value">{{ user?.email || "User Email"}}</span>
+            </div>
+        </div>
+        <ng-container *ngIf="isLoggedIn(); else signInButton">
+            <button class="btn btn-outline-primary btn-lg logout-button" (click)="logout()">Logout</button>
+        </ng-container>
+        <ng-template #signInButton>
+            <button class="btn btn-primary btn-lg logout-button" type="submit" routerLink="/sign-in">Sign-In</button>
+        </ng-template>
+    </div>
+</div>
