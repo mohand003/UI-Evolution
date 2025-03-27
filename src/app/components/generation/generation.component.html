@@ -14,7 +14,7 @@
             [ngClass]="{'user': message.isUser, 'bot': !message.isUser}">
             <p>{{ message.text }}</p>
             <br>
-            <img *ngIf="message.imageUrl" [src]="message.imageUrl" alt="Generated UI" style="width: 22rem; height: 38rem;">
+            <img *ngIf="message.imageUrl" [src]="message.imageUrl" alt="Generated UI" style="width: auto; height: auto;" class="rounded">
         </div>
         <br>
         <div *ngFor="let msg of satisfied" class="message" [ngClass]="{'bot': !msg.isUser}">

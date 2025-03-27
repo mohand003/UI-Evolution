@@ -91,7 +91,7 @@ export class GenerationComponent {
       isUser: true,
     });
 
-    const apiUrl = 'https://a81f-156-210-149-186.ngrok-free.app/home/tryer';
+    const apiUrl = 'https://529c-156-210-149-186.ngrok-free.app/home/tryer';
 
     this.homeService.generation(apiUrl, this.userInput).subscribe({
       next: (res) => {
@@ -121,9 +121,10 @@ export class GenerationComponent {
           console.error('No image URL or base64 image found in the response:', res);
           this.messages.push({
             text: 'Failed to generate the UI😔. Invalid response from the server❌.',
-            imageUrl: "../../images/Error1.png",
+            imageUrl: "../../images/Error13.png",
             isUser: false,
           });
+          this.clear()
         }
       },
 
@@ -131,7 +132,7 @@ export class GenerationComponent {
         console.error('Error fetching UI:', error);
         this.messages.push({
           text: 'Failed to connect the server😔🚫.Please try again🔄️.',
-          imageUrl: "../../images/Not-Found1.png",
+          imageUrl: "../../images/Not-Found12.png",
           isUser: false,
         });
         this.clear()
