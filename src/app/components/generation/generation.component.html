@@ -14,9 +14,13 @@
             [ngClass]="{'user': message.isUser, 'bot': !message.isUser}">
             <p>{{ message.text }}</p>
             <br>
-            <img *ngIf="message.imageUrl" [src]="message.imageUrl" alt="Generated UI" style="width: auto; height: auto;"
-                class="rounded">
+            <div *ngIf="message.loading" class="spinner-container">
+                <div class="spinner"></div>
+                <p>Loading...</p>
+            </div>
+            <img *ngIf="message.imageUrl" [src]="message.imageUrl" alt="Generated UI" class="rounded">
         </div>
+
         <br>
         <div *ngFor="let msg of satisfied" class="message" [ngClass]="{'bot': !msg.isUser}">
             <p>{{ msg.text }}</p>

@@ -13,12 +13,13 @@ import { CommonModule } from '@angular/common';
 export class GenerationComponent {
   userInput: string = '';
   imageUrl: SafeUrl | null = null;
-  // messages: { text: string; imageUrl?: SafeUrl; isUser: boolean }[] = [];
   messages: {
     text: string;
     imageUrl?: SafeUrl;
     isUser: boolean;
+    loading?: boolean;
   }[] = [];
+
   satisfied: {
     text: string;
     imageUrl?: SafeUrl;
@@ -30,7 +31,6 @@ export class GenerationComponent {
       action: () => void;
     }[];
   }[] = [];
-
 
   constructor(private homeService: HomeService, private sanitizer: DomSanitizer) { }
 
@@ -57,7 +57,6 @@ export class GenerationComponent {
     });
   }
 
-
   finish() {
     if (this.satisfied.length > 0) {
       this.satisfied.pop();
@@ -71,9 +70,6 @@ export class GenerationComponent {
     this.userInput = '';
   }
 
-
-
-
   clear() {
     this.userInput = '';
   }
@@ -85,16 +81,28 @@ export class GenerationComponent {
       this.satisfied.splice(index, 1);
     }
 
-
+    // Push the user message
     this.messages.push({
       text: this.userInput,
       isUser: true,
     });
 
+    const loadingMessage = {
+      text: "Generating UI, please wait... ⏳",
+      isUser: false,
+      loading: true
+    };
+    this.messages.push(loadingMessage);
+
     const apiUrl = 'https://529c-156-210-149-186.ngrok-free.app/home/tryer';
 
     this.homeService.generation(apiUrl, this.userInput).subscribe({
       next: (res) => {
+        const index = this.messages.findIndex(msg => msg.loading);
+        if (index !== -1) {
+          this.messages.splice(index, 1);
+        }
+
         if (res.url) {
           this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(res.url);
           this.messages.push({
@@ -102,41 +110,31 @@ export class GenerationComponent {
             imageUrl: this.imageUrl,
             isUser: false,
           });
-          this.regenirate()
-          // Open the image in a new tab (optional)
-          // window.open(res.url, '_blank');
-        }
-        else if (res.url) {
-          const dataUrl = `data:image/png;base64,${res.url}`;
-          this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(dataUrl);
-          this.messages.push({
-            text: "Here's your generated UI:",
-            imageUrl: this.imageUrl,
-            isUser: false,
-          });
-          // Open the image in a new tab (optional)
-          // window.open(dataUrl, '_blank');
-        }
-        else {
-          console.error('No image URL or base64 image found in the response:', res);
+          this.regenirate();
+        } else {
           this.messages.push({
             text: 'Failed to generate the UI😔. Invalid response from the server❌.',
             imageUrl: "../../images/Error13.png",
             isUser: false,
           });
-          this.clear()
+          this.clear();
         }
       },
 
       error: (error) => {
-        console.error('Error fetching UI:', error);
+        const index = this.messages.findIndex(msg => msg.loading);
+        if (index !== -1) {
+          this.messages.splice(index, 1);
+        }
+
         this.messages.push({
-          text: 'Failed to connect the server😔🚫.Please try again🔄️.',
+          text: 'Failed to connect to the server😔🚫. Please try again🔄️.',
           imageUrl: "../../images/Not-Found12.png",
           isUser: false,
         });
-        this.clear()
+        this.clear();
       },
     });
   }
+
 }
