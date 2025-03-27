@@ -14,15 +14,15 @@
             [ngClass]="{'user': message.isUser, 'bot': !message.isUser}">
             <p>{{ message.text }}</p>
             <br>
-            <img *ngIf="message.imageUrl" [src]="message.imageUrl" alt="Generated UI" style="width: auto; height: auto;" class="rounded">
+            <img *ngIf="message.imageUrl" [src]="message.imageUrl" alt="Generated UI" style="width: auto; height: auto;"
+                class="rounded">
         </div>
         <br>
         <div *ngFor="let msg of satisfied" class="message" [ngClass]="{'bot': !msg.isUser}">
             <p>{{ msg.text }}</p>
             <div *ngIf="msg.buttons">
-                <button type="button" data-bs-toggle="tooltip" data-bs-placement="right"
-                    data-bs-title="Tooltip on right" *ngFor="let btn of msg.buttons" [ngClass]="btn.class"
-                    [ngStyle]="btn.style" (click)="btn.action()">
+                <button type="button" *ngFor="let btn of msg.buttons" [ngClass]="btn.class" [ngStyle]="btn.style"
+                    (click)="btn.action()">
                     {{ btn.text }}
                 </button>
             </div>

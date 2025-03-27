@@ -42,15 +42,15 @@ export class GenerationComponent {
       isUser: false,
       buttons: [
         {
-          text: "Yes",
+          text: "Satisfied😁",
           class: "btn btn-outline-success",
-          style: { "margin-right": "20px", "padding-left": "30px", "padding-right": "30px" },
+          style: { "margin-right": "15px", "padding-left": "18px", "padding-right": "18px" },
           action: () => this.finish()
         },
         {
-          text: "No",
+          text: "Not Satisfied😔",
           class: "btn btn-outline-danger",
-          style: { "padding-left": "30px", "padding-right": "30px" },
+          style: { "padding-left": "18px", "padding-right": "18px" },
           action: () => this.fetchImage()
         }
       ]
@@ -82,10 +82,10 @@ export class GenerationComponent {
     const index = this.satisfied.findIndex(msg => msg.text === "Hope to reach your expectations.....🤩");
 
     if (index !== -1) {
-      this.satisfied.splice(index, 1); 
+      this.satisfied.splice(index, 1);
     }
 
-    
+
     this.messages.push({
       text: this.userInput,
       isUser: true,
