@@ -1,23 +1,24 @@
-<div class="profile-container">
-    <div class="profile-card text-center">
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="profile-card text-center shadow-lg p-4 bg-white rounded">
         <div class="profile-header">
-            <img [src]="user?.profilePicture || 'https://res.cloudinary.com/df9rcxvpg/image/upload/v1743151551/UI%20Evolution/logo.png'" alt="Profile Picture" class="profile-picture">
+            <img [src]="user?.profilePicture || 'https://res.cloudinary.com/df9rcxvpg/image/upload/v1743151551/UI%20Evolution/logo.png'"
+                alt="Profile Picture" class="profile-picture img-fluid">
         </div>
         <div class="profile-details">
-            <div class="detail-item">
-                <span class="detail-label">User Name:</span>
-                <span class="detail-value">{{ user?.name || "User Name"}}</span>
+            <div class="detail-item d-flex justify-content-between">
+                <span class="fw-bold text-muted">User Name:</span>
+                <span>{{ user?.name || "User Name" }}</span>
             </div>
-            <div class="detail-item">
-                <span class="detail-label">Email:</span>
-                <span class="detail-value">{{ user?.email || "User Email"}}</span>
+            <div class="detail-item d-flex justify-content-between">
+                <span class="fw-bold text-muted">Email:</span>
+                <span>{{ user?.email || "User Email" }}</span>
             </div>
         </div>
         <ng-container *ngIf="isLoggedIn(); else signInButton">
-            <button class="btn btn-outline-primary btn-lg logout-button" (click)="logout()">Logout</button>
+            <button class="btn btn-outline-primary btn-lg w-100 mt-3" (click)="logout()">Logout</button>
         </ng-container>
         <ng-template #signInButton>
-            <button class="btn btn-primary btn-lg logout-button" type="submit" routerLink="/sign-in">Sign-In</button>
+            <button class="btn btn-primary btn-lg w-100 mt-3" type="submit" routerLink="/sign-in">Sign-In</button>
         </ng-template>
     </div>
 </div>

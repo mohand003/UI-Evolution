@@ -1,41 +1,43 @@
 <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid container">
-            <img src="https://res.cloudinary.com/df9rcxvpg/image/upload/v1743151551/UI%20Evolution/logo.png" alt="Logo">
-            <a class="navbar-brand display-2 fw-bold" style="color: #3b82f6;" routerLink="/home">UI Evolution</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+        <div class="container">
+            <!-- Logo & Brand -->
+            <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+                <img src="https://res.cloudinary.com/df9rcxvpg/image/upload/v1743151551/UI%20Evolution/logo.png"
+                    alt="Logo" class="logo">
+                <span class="ms-2 fw-bold display-6 text-primary">UI Evolution</span>
+            </a>
+
+            <!-- Toggler for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto gap-3 text-center text-lg-start">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" routerLink="/home"
-                            routerLinkActive="active">Home</a>
+                        <a class="nav-link active" routerLink="/home" routerLinkActive="active">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" routerLink="/features"
-                            routerLinkActive="active">Features</a>
+                        <a class="nav-link" routerLink="/features" routerLinkActive="active">Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" routerLink="/pricing"
-                            routerLinkActive="active">Pricing</a>
+                        <a class="nav-link" routerLink="/pricing" routerLinkActive="active">Pricing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" routerLink="/contact"
-                            routerLinkActive="active">Contact</a>
+                        <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" routerLink="/about"
-                            routerLinkActive="active">About-Us</a>
+                        <a class="nav-link" routerLink="/about" routerLinkActive="active">About Us</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <a class="nav-link text-center" aria-current="page" routerLink="/profile" routerLinkActive="active">
-                        <i class="bi bi-person-circle fa-2xl"></i>
-                    </a>
-                </form>
+
+                <!-- Profile Icon -->
+                <a class="nav-link text-center text-lg-end" routerLink="/profile" routerLinkActive="active">
+                    <i class="bi bi-person-circle fs-3"></i>
+                </a>
             </div>
         </div>
     </nav>
