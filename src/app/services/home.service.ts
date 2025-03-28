@@ -29,7 +29,7 @@ export class HomeService {
     });
     console.log(headers)
 
-    const body = { "message": userInput };
+    const body = { "message": userInput , "Token":token};
 
     return this.http.post(apiUrl, body, { headers, responseType: 'json' });
     // return this.http.post(apiUrl, { input: userInput });

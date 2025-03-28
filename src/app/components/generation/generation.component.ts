@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HomeService } from '../../services/home.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-generation',
-  imports: [ReactiveFormsModule, CommonModule, FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './generation.component.html',
   styleUrl: './generation.component.scss'
 })
@@ -70,6 +71,23 @@ export class GenerationComponent {
     this.userInput = '';
   }
 
+  downloadImage(imageUrl: SafeUrl | undefined) {
+    if (!imageUrl) return;
+
+    const url = this.sanitizer.sanitize(4, imageUrl);
+
+    if (!url) return;
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'generated-ui.png');
+    link.setAttribute('target', '_blank');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+
   clear() {
     this.userInput = '';
   }
@@ -81,7 +99,6 @@ export class GenerationComponent {
       this.satisfied.splice(index, 1);
     }
 
-    // Push the user message
     this.messages.push({
       text: this.userInput,
       isUser: true,
@@ -94,7 +111,7 @@ export class GenerationComponent {
     };
     this.messages.push(loadingMessage);
 
-    const apiUrl = 'https://529c-156-210-149-186.ngrok-free.app/home/tryer';
+    const apiUrl = 'https://77c8-156-210-149-186.ngrok-free.app/home/tryer';
 
     this.homeService.generation(apiUrl, this.userInput).subscribe({
       next: (res) => {
@@ -114,7 +131,7 @@ export class GenerationComponent {
         } else {
           this.messages.push({
             text: 'Failed to generate the UI😔. Invalid response from the server❌.',
-            imageUrl: "../../images/Error13.png",
+            imageUrl: "https://res.cloudinary.com/df9rcxvpg/image/upload/v1743151551/UI%20Evolution/error.png",
             isUser: false,
           });
           this.clear();
@@ -129,7 +146,7 @@ export class GenerationComponent {
 
         this.messages.push({
           text: 'Failed to connect to the server😔🚫. Please try again🔄️.',
-          imageUrl: "../../images/Not-Found12.png",
+          imageUrl: "https://res.cloudinary.com/df9rcxvpg/image/upload/v1743151555/UI%20Evolution/not-found.png",
           isUser: false,
         });
         this.clear();

@@ -16,9 +16,19 @@
             <br>
             <div *ngIf="message.loading" class="spinner-container">
                 <div class="spinner"></div>
-                <p>Loading...</p>
             </div>
-            <img *ngIf="message.imageUrl" [src]="message.imageUrl" alt="Generated UI" class="rounded">
+            <div class="image-buttons-container" *ngIf="message.imageUrl">
+                <img *ngIf="message.imageUrl" [src]="message.imageUrl" alt="Generated UI" class="rounded">
+                <div class="buttons-container">
+                    <button class="btn btn-outline-secondary btn-sm download-btn decoration"
+                        (click)="downloadImage(message.imageUrl!)">
+                        <i class="bi bi-cloud-arrow-down-fill fa-xl"></i>
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm download-btn decoration1">
+                        <i class="bi bi-share-fill fa-xl"></i>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <br>
