@@ -93,6 +93,21 @@ export class GenerationComponent {
   }
 
   fetchImage() {
+    if (!this.userInput.toLowerCase().includes("ui")) {
+      this.messages.push({
+        text: this.userInput,
+        isUser: true,
+      });
+
+      this.messages.push({
+        text: `🎨🤖 UI magic only!\nWe only do UI, no AI overlords here!✨😎`,
+        imageUrl: "https://res.cloudinary.com/df9rcxvpg/image/upload/v1743598997/UI%20Evolution/NotUI.png",
+        isUser: false,
+      });
+      this.clear()
+      return;
+    }
+
     const index = this.satisfied.findIndex(msg => msg.text === "Hope to reach your expectations.....🤩");
 
     if (index !== -1) {
@@ -111,7 +126,7 @@ export class GenerationComponent {
     };
     this.messages.push(loadingMessage);
 
-    const apiUrl = 'https://77c8-156-210-149-186.ngrok-free.app/home/tryer';
+    const apiUrl = 'https://5f6a-197-53-108-220.ngrok-free.app/home/chat';
 
     this.homeService.generation(apiUrl, this.userInput).subscribe({
       next: (res) => {
@@ -120,8 +135,8 @@ export class GenerationComponent {
           this.messages.splice(index, 1);
         }
 
-        if (res.url) {
-          this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(res.url);
+        if (res.imagePath) {
+          this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(res.imagePath);
           this.messages.push({
             text: "Here's your generated UI:",
             imageUrl: this.imageUrl,
@@ -152,6 +167,7 @@ export class GenerationComponent {
         this.clear();
       },
     });
-  }
+}
+
 
 }

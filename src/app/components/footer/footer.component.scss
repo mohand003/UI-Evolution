@@ -1,21 +1,4 @@
-/* Hover effect */
-.text-white:hover {
+a.text-white:hover {
     color: #3b82f6 !important;
     text-decoration: underline !important;
-}
-
-/* Mobile-first adjustments */
-@media (max-width: 768px) {
-    .input-group {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .input-group input {
-        width: 100%;
-    }
-
-    .input-group button {
-        width: 100%;
-    }
 }

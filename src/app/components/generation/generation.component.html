@@ -1,49 +1,56 @@
-<div class="container py-4">
-    <div class="generator-container bg-white p-4 rounded shadow-lg">
-        <div class="generator-header text-center">
-            <h2 class="text-primary fw-bold">UI Evolution</h2>
-            <p class="text-muted">Describe the image you want, and we'll generate it for you!</p>
-        </div>
-
-        <div class="generator-output overflow-auto border rounded p-3 bg-light" id="generator-output">
-            <div class="message bot">
-                <p class="bg-secondary text-white rounded py-2 px-3">
-                    Hi!🖐🏻❤️<br> How can I help you today? 😊
-                </p>
-            </div>
-
-            <div *ngFor="let message of messages" class="message d-flex flex-column"
-                [ngClass]="{'align-self-end': message.isUser}">
-                <p class="rounded py-2 px-3 mw-100 w-auto"
-                    [ngClass]="{'bg-primary text-white': message.isUser, 'bg-secondary text-white': !message.isUser}">
-                    {{ message.text }}
-                </p>
-
-                <div *ngIf="message.loading" class="spinner-container mt-2">
-                    <div class="spinner"></div>
-                </div>
-
-                <div class="image-buttons-container mt-2" *ngIf="message.imageUrl">
-                    <img [src]="message.imageUrl" alt="Generated UI" class="rounded img-fluid">
-                    <div class="buttons-container d-flex gap-2">
-                        <button class="btn btn-outline-secondary btn-sm rounded-circle"
-                            (click)="downloadImage(message.imageUrl!)">
-                            <i class="bi bi-cloud-arrow-down-fill"></i>
-                        </button>
-                        <button class="btn btn-outline-primary btn-sm rounded-circle">
-                            <i class="bi bi-share-fill"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <form class="generator-input mt-3">
-            <div class="input-group">
-                <input type="text" id="generator-input" placeholder="Describe the image you want..."
-                    class="form-control" [(ngModel)]="userInput" name="userInput">
-                <button type="button" class="btn btn-primary" (click)="fetchImage()">Generate</button>
-            </div>
-        </form>
+<div class="generator-container">
+    <div class="generator-header">
+        <h2>UI Evolution</h2>
+        <p>Describe the image you want, and we'll generate it for you!</p>
     </div>
+
+    <div class="generator-output" id="generator-output">
+        <div class="message bot">
+            <p>Hi!🖐🏻❤️<br>
+                How can i help you today?😊
+            </p>
+        </div>
+        <div class="message bot">
+            <p>
+                🚀 For the ultimate experience in quality and performance,<br>
+                please use this app ONLY for creating user interfaces! 🎨✨
+            </p>
+        </div>
+        <div *ngFor="let message of messages" class="message"
+            [ngClass]="{'user': message.isUser, 'bot': !message.isUser}">
+            <p>{{ message.text }}</p>
+            <br>
+            <div *ngIf="message.loading" class="spinner-container">
+                <div class="spinner"></div>
+            </div>
+            <div class="image-buttons-container" *ngIf="message.imageUrl">
+                <img *ngIf="message.imageUrl" [src]="message.imageUrl" alt="Generated UI" class="rounded">
+                <div class="buttons-container">
+                    <button class="btn btn-outline-secondary btn-sm download-btn decoration"
+                        (click)="downloadImage(message.imageUrl!)">
+                        <i class="bi bi-cloud-arrow-down-fill fa-xl"></i>
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm download-btn decoration1">
+                        <i class="bi bi-share-fill fa-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div *ngFor="let msg of satisfied" class="message" [ngClass]="{'bot': !msg.isUser}">
+            <p>{{ msg.text }}</p>
+            <div *ngIf="msg.buttons">
+                <button type="button" *ngFor="let btn of msg.buttons" [ngClass]="btn.class" [ngStyle]="btn.style"
+                    (click)="btn.action()">
+                    {{ btn.text }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <form class="generator-input">
+        <input type="text" id="generator-input" placeholder="Describe the image you want..." [(ngModel)]="userInput"
+            name="userInput">
+        <button type="button" (click)="fetchImage()" id="liveToastBtn">Generate</button>
+    </form>
 </div>
