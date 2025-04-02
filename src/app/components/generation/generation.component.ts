@@ -93,6 +93,11 @@ export class GenerationComponent {
   }
 
   fetchImage() {
+    if (!this.userInput || this.userInput.trim() === "") {
+      this.clear();
+      return;
+    }
+
     if (!this.userInput.toLowerCase().includes("ui")) {
       this.messages.push({
         text: this.userInput,
@@ -104,7 +109,7 @@ export class GenerationComponent {
         imageUrl: "https://res.cloudinary.com/df9rcxvpg/image/upload/v1743598997/UI%20Evolution/NotUI.png",
         isUser: false,
       });
-      this.clear()
+      this.clear();
       return;
     }
 
@@ -126,7 +131,7 @@ export class GenerationComponent {
     };
     this.messages.push(loadingMessage);
 
-    const apiUrl = 'https://5f6a-197-53-108-220.ngrok-free.app/home/chat';
+    const apiUrl = 'https://93b3-156-211-100-193.ngrok-free.app/home/chat';
 
     this.homeService.generation(apiUrl, this.userInput).subscribe({
       next: (res) => {
@@ -146,7 +151,7 @@ export class GenerationComponent {
         } else {
           this.messages.push({
             text: 'Failed to generate the UI😔. Invalid response from the server❌.',
-            imageUrl: "https://res.cloudinary.com/df9rcxvpg/image/upload/v1743151551/UI%20Evolution/error.png",
+            imageUrl: "https://res.cloudinary.com/df9rcxvpg/image/upload/v1743622917/UI%20Evolution/error-message.png",
             isUser: false,
           });
           this.clear();
@@ -161,13 +166,13 @@ export class GenerationComponent {
 
         this.messages.push({
           text: 'Failed to connect to the server😔🚫. Please try again🔄️.',
-          imageUrl: "https://res.cloudinary.com/df9rcxvpg/image/upload/v1743151555/UI%20Evolution/not-found.png",
+          imageUrl: "https://res.cloudinary.com/df9rcxvpg/image/upload/v1743622917/UI%20Evolution/not-found.png",
           isUser: false,
         });
         this.clear();
       },
     });
-}
+  }
 
 
 }
