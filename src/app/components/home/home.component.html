@@ -11,8 +11,9 @@
             <a routerLink="/generation" class="btn btn-primary btn-lg">
                 Start Generating
             </a>
-            <p>You have 3 free prompts,want more?</p>
-            <p><a routerLink="/sign-up" class="link-primary">Sign-Up</a></p>
+            <div *ngIf="!isLoggedIn">
+                <p>You have 3 free prompts, want more?</p>
+            </div>
         </div>
     </section>
 

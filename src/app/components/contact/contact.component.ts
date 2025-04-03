@@ -24,6 +24,7 @@ export class ContactComponent {
         next: () => {
           this.submitting = false;
           alert('Message sent successfully!');
+          this.contactForm.reset();
         },
         error: (error) => {
           console.log(error);

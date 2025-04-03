@@ -31,11 +31,19 @@
                             routerLinkActive="active">About-Us</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <a class="nav-link text-center" aria-current="page" routerLink="/profile" routerLinkActive="active">
-                        <i class="bi bi-person-circle fa-2xl"></i>
-                    </a>
-                </form>
+                <div class="d-flex align-items-center">
+                    <ng-container *ngIf="isLoggedIn(); else authButtons">
+                        <a class="nav-link text-center" aria-current="page" routerLink="/profile"
+                            routerLinkActive="active">
+                            <i class="bi bi-person-circle fa-2xl"></i>
+                        </a>
+                    </ng-container>
+                    <ng-template #authButtons>
+                        <div class="button-group">
+                            <button class="btn btn-outline-success" routerLink="/sign-up">SignUp/SignIn</button>
+                        </div>
+                    </ng-template>
+                </div>
             </div>
         </div>
     </nav>
