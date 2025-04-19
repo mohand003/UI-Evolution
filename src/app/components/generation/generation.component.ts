@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeService } from '../../services/home.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-generation',
@@ -11,7 +12,16 @@ import { CommonModule } from '@angular/common';
   templateUrl: './generation.component.html',
   styleUrl: './generation.component.scss'
 })
-export class GenerationComponent {
+export class GenerationComponent implements AfterViewInit {
+  @ViewChild('generatorInput', { static: true }) generatorInput!: ElementRef;
+
+  ngAfterViewInit() {
+    this.generatorInput.nativeElement.addEventListener('input', () => {
+      const textarea = this.generatorInput.nativeElement;
+      textarea.style.height = 'auto';
+      textarea.style.height = textarea.scrollHeight + 'px';
+    });
+  }
   userInput: string = '';
   imageUrl: SafeUrl | null = null;
   messages: {
@@ -131,7 +141,7 @@ export class GenerationComponent {
     };
     this.messages.push(loadingMessage);
 
-    const apiUrl = 'https://93b3-156-211-100-193.ngrok-free.app/home/chat';
+    const apiUrl = 'https://40c7-156-211-100-193.ngrok-free.app/home/chat';
 
     this.homeService.generation(apiUrl, this.userInput).subscribe({
       next: (res) => {
@@ -173,6 +183,4 @@ export class GenerationComponent {
       },
     });
   }
-
-
 }

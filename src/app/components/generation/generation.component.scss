@@ -100,18 +100,19 @@ body {
 }
 
 .spinner-container {
-    display: flex;
+    display: flex !important;
     align-items: center;
     gap: 10px;
 }
 
-.spinner {
+.my-spinner {
+    margin-left: 120px;
     width: 24px;
     height: 24px;
     border: 3px solid rgba(0, 0, 0, 0.2);
     border-top: 3px solid #3b82f6;
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spinny 1s linear infinite;
 }
 
 .decoration {
@@ -143,12 +144,23 @@ body {
 }
 
 
-@keyframes spin {
-    0% {
+@keyframes spinny {
+    from {
         transform: rotate(0deg);
     }
 
-    100% {
+    to {
         transform: rotate(360deg);
     }
+}
+
+
+
+textarea.form-control.auto-resize {
+    resize: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    flex: 1;
+    overflow: hidden;
 }

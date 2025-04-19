@@ -18,10 +18,10 @@
         </div>
         <div *ngFor="let message of messages" class="message"
             [ngClass]="{'user': message.isUser, 'bot': !message.isUser}">
-            <p>{{ message.text }}</p>
+            <p style="white-space: pre-line;">{{ message.text }}</p>
             <br>
             <div *ngIf="message.loading" class="spinner-container">
-                <div class="spinner"></div>
+                <div class="my-spinner"></div>
             </div>
             <div class="image-buttons-container" *ngIf="message.imageUrl">
                 <img *ngIf="message.imageUrl" [src]="message.imageUrl" alt="Generated UI" class="rounded">
@@ -49,8 +49,9 @@
         </div>
     </div>
     <form class="generator-input">
-        <input type="text" id="generator-input" placeholder="Describe the image you want..." [(ngModel)]="userInput"
-            name="userInput">
-        <button type="button" (click)="fetchImage()" id="liveToastBtn">Generate</button>
+        <textarea #generatorInput placeholder="Describe the image you want..." [(ngModel)]="userInput" name="userInput"
+            rows="1" class="form-control auto-resize"></textarea>
+        <button type="button" (click)="fetchImage()" id="liveToastBtn" class="btn btn-primary">Generate</button>
     </form>
+
 </div>
