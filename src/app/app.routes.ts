@@ -11,13 +11,13 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent, title: "Home" },
-    { path: 'about', component: AboutComponent, title: "About" },
-    { path: 'features', component: FeaturesComponent, title: "Features" },
-    { path: 'pricing', component: PricingComponent, title: "Pricing" },
-    { path: 'contact', component: ContactComponent, title: "Contact" },
-    { path: 'sign-in', component: SignInComponent, title: "SignIn" },
-    { path: 'sign-up', component: SignUpComponent, title: "SignUp" },
-    { path: 'generation', component: GenerationComponent, title: "Generation Time" },
-    { path: 'profile', component: ProfileComponent, title: "Profile" },
+    { path: 'home', component: HomeComponent, title: "UI-Evolution" },
+    { path: 'about', component: AboutComponent, title: "UI-Evolution.About" },
+    { path: 'features', component: FeaturesComponent, title: "UI-Evolution.Features" },
+    { path: 'pricing', component: PricingComponent, title: "UI-Evolution.Pricing" },
+    { path: 'contact', component: ContactComponent, title: "UI-Evolution.Contact" },
+    { path: 'sign-in', component: SignInComponent, title: "UI-Evolution.SignIn" },
+    { path: 'sign-up', component: SignUpComponent, title: "UI-Evolution.SignUp" },
+    { path: 'generation', component: GenerationComponent, title: "UI-Evolution.Generation Time" },
+    { path: 'profile', component: ProfileComponent, title: "UI-Evolution.Profile" },
 ];
