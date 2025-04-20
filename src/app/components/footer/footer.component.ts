@@ -1,15 +1,20 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
 import { HomeService } from '../../services/home.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-footer',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, NgIf],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
+  alertMessage = '';
+  alertType: 'success' | 'danger' = 'success';
+  showAlert = false;
+
   clearInput() {
     this.subscribeForm.get('email')?.reset();
   }
@@ -31,12 +36,19 @@ export class FooterComponent {
     if (this.subscribeForm.valid) {
       this.homeService.subscribe(this.subscribeForm.value).subscribe({
         next: (res) => {
-          alert(res);
-          this.clearInput()
-        }, error: (error) => {
-          alert(error);
+          this.alertType = 'success';
+          this.alertMessage = 'Subscribed successfully!';
+          this.showAlert = true;
+          setTimeout(() => this.showAlert = false, 3000);
+          this.clearInput();
+        },
+        error: (error) => {
+          this.alertType = 'danger';
+          this.alertMessage = 'Subscription failed. Please try again.';
+          this.showAlert = true;
+          setTimeout(() => this.showAlert = false, 3000);
         }
-      })
+      });
     }
   }
 }

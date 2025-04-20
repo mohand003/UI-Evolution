@@ -23,6 +23,9 @@
 
             <div class="col-md-4">
                 <h5 class="fw-bold mb-3">Subscribe to Our Newsletter</h5>
+                <div *ngIf="showAlert" class="alert alert-{{alertType}} alert-dismissible fade show" role="alert">
+                    {{ alertMessage }}
+                </div>
                 <form class="input-group" [formGroup]="subscribeForm" (ngSubmit)="subscribe()">
                     <input type="email" class="form-control" placeholder="Your email" aria-label="Your email"
                         formControlName="email">
