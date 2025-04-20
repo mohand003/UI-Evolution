@@ -1,184 +1,10 @@
-// body {
-//     background-color: #f8f9fa;
-//     font-family: Arial, sans-serif;
-// }
-
-// .generator-container {
-//     max-width: 100%;
-//     margin: 0 auto;
-//     padding: 2rem;
-//     border-radius: 8px;
-//     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-//     height: 100%;
-//     display: flex;
-//     flex-direction: column;
-// }
-
-// .generator-header {
-//     text-align: center;
-//     margin-bottom: 1.5rem;
-// }
-
-// .generator-header h2 {
-//     font-weight: 700;
-//     color: #3b82f6;
-// }
-
-// .generator-header p {
-//     font-weight: 300;
-//     color: white;
-// }
-
-// .generator-output {
-//     flex: 1;
-//     overflow-y: auto;
-//     padding: 1rem;
-//     border: 1px solid #ddd;
-//     border-radius: 8px;
-//     margin-bottom: 1rem;
-//     background-color: #f9f9f9;
-// }
-
-// .message {
-//     margin-bottom: 1rem;
-// }
-
-// .message.user {
-//     text-align: right;
-// }
-
-// .message.bot {
-//     text-align: left;
-// }
-
-// .message p {
-//     display: inline-block;
-//     padding: 0.75rem 1rem;
-//     border-radius: 8px;
-//     max-width: 70%;
-// }
-
-// .message.user p {
-//     background-color: #3b82f6;
-//     color: white;
-// }
-
-// .message.bot p {
-//     background-color: #e9ecef;
-//     color: #333;
-// }
-
-// .generated-image {
-//     max-width: 100%;
-//     border-radius: 8px;
-//     margin-top: 1rem;
-// }
-
-// .generator-input {
-//     display: flex;
-//     gap: 0.5rem;
-// }
-
-// .generator-input input {
-//     flex: 1;
-//     padding: 0.75rem;
-//     border: 1px solid #ddd;
-//     border-radius: 8px;
-// }
-
-// .generator-input button {
-//     padding: 0.75rem 1.5rem;
-//     background-color: #3b82f6;
-//     border: none;
-//     color: white;
-//     border-radius: 8px;
-//     cursor: pointer;
-// }
-
-// .generator-input button:hover {
-//     background-color: #2563eb;
-// }
-
-// .spinner-container {
-//     display: flex !important;
-//     align-items: center;
-//     gap: 10px;
-// }
-
-// .my-spinner {
-//     margin-left: 120px;
-//     width: 24px;
-//     height: 24px;
-//     border: 3px solid rgba(0, 0, 0, 0.2);
-//     border-top: 3px solid #3b82f6;
-//     border-radius: 50%;
-//     animation: spinny 1s linear infinite;
-// }
-
-// .decoration {
-//     position: relative;
-//     width: 40px;
-//     height: 40px;
-//     margin-left: 10px;
-//     border-radius: 50%;
-// }
-
-// .decoration1 {
-//     width: 40px;
-//     height: 40px;
-//     padding-left: 5px;
-//     margin-left: 10.75px;
-//     border-radius: 50%;
-// }
-
-// .image-buttons-container {
-//     display: flex;
-//     align-items: center;
-//     gap: 10px;
-// }
-
-// .buttons-container {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 5px;
-// }
-
-
-// @keyframes spinny {
-//     from {
-//         transform: rotate(0deg);
-//     }
-
-//     to {
-//         transform: rotate(360deg);
-//     }
-// }
-
-
-
-// textarea.form-control.auto-resize {
-//     resize: none;
-//     border-radius: 8px;
-//     padding: 0.75rem;
-//     border: 1px solid #ddd;
-//     flex: 1;
-//     overflow: hidden;
-// }
-
 body {
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    box-sizing: border-box;
-}
-
-*, *::before, *::after {
-    box-sizing: inherit;
 }
 
 .generator-container {
-    max-width: 100vw;
-    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
     padding: 2rem;
     border-radius: 8px;
@@ -186,7 +12,6 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
 }
 
 .generator-header {
@@ -207,18 +32,15 @@ body {
 .generator-output {
     flex: 1;
     overflow-y: auto;
-    overflow-x: hidden;
     padding: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     margin-bottom: 1rem;
     background-color: #f9f9f9;
-    max-width: 100vw;
 }
 
 .message {
     margin-bottom: 1rem;
-    word-break: break-word;
 }
 
 .message.user {
@@ -233,9 +55,7 @@ body {
     display: inline-block;
     padding: 0.75rem 1rem;
     border-radius: 8px;
-    max-width: 90vw;
-    min-width: 0;
-    box-sizing: border-box;
+    max-width: 70%;
 }
 
 .message.user p {
@@ -257,20 +77,13 @@ body {
 .generator-input {
     display: flex;
     gap: 0.5rem;
-    width: 100%;
 }
 
-.generator-input input,
-textarea.form-control.auto-resize {
+.generator-input input {
     flex: 1;
     padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 8px;
-    resize: none;
-    overflow: hidden;
-    min-width: 0;
-    max-width: 100vw;
-    box-sizing: border-box;
 }
 
 .generator-input button {
@@ -280,7 +93,6 @@ textarea.form-control.auto-resize {
     color: white;
     border-radius: 8px;
     cursor: pointer;
-    white-space: nowrap;
 }
 
 .generator-input button:hover {
@@ -323,8 +135,6 @@ textarea.form-control.auto-resize {
     display: flex;
     align-items: center;
     gap: 10px;
-    max-width: 100vw;
-    overflow-x: auto;
 }
 
 .buttons-container {
@@ -333,82 +143,24 @@ textarea.form-control.auto-resize {
     gap: 5px;
 }
 
+
 @keyframes spinny {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .generator-container {
-        padding: 1.5rem;
-    }
-    .generator-output {
-        padding: 0.75rem;
-    }
-}
 
-@media (max-width: 768px) {
-    .generator-container {
-        padding: 1rem;
-    }
-    .generator-header h2 {
-        font-size: 1.5rem;
-    }
-    .generator-header p {
-        font-size: 1rem;
-    }
-    .generator-output {
-        padding: 0.5rem;
-    }
-    .message p {
-        max-width: 95vw;
-        font-size: 1rem;
-    }
-    .generator-input button {
-        padding: 0.5rem 1rem;
-        font-size: 0.95rem;
-    }
-}
 
-@media (max-width: 480px) {
-    .generator-container {
-        padding: 0.5rem;
-    }
-    .generator-header h2 {
-        font-size: 1.1rem;
-    }
-    .generator-header p {
-        font-size: 0.9rem;
-    }
-    .generator-output {
-        padding: 0.25rem;
-    }
-    .message p {
-        max-width: 98vw;
-        font-size: 0.9rem;
-        padding: 0.5rem 0.5rem;
-    }
-    .generator-input {
-        flex-direction: column;
-        gap: 0.25rem;
-    }
-    .generator-input button {
-        width: 100%;
-        font-size: 0.9rem;
-        padding: 0.5rem;
-    }
-    .decoration,
-    .decoration1 {
-        width: 32px;
-        height: 32px;
-        margin-left: 5px;
-    }
-    .my-spinner {
-        margin-left: 0;
-    }
+textarea.form-control.auto-resize {
+    resize: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    flex: 1;
+    overflow: hidden;
 }
