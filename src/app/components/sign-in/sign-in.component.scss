@@ -1,26 +1,96 @@
+// body {
+//     background-color: #f8f9fa;
+// }
+
+// .signin-container {
+//     max-width: 400px;
+//     margin: 0 auto;
+//     padding: 2rem;
+//     background: white;
+//     border-radius: 8px;
+//     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//     margin-top: 5rem;
+// }
+
+// .signin-container h2 {
+//     margin-bottom: 1.5rem;
+//     font-weight: 700;
+//     color: #3b82f6;
+// }
+
+// .signin-container img {
+//     width: 17rem;
+//     margin-left: 2rem;
+// }
+
+// .form-control:focus {
+//     border-color: #3b82f6;
+//     box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+// }
+
+// .btn-primary {
+//     background-color: #3b82f6;
+//     border: none;
+//     width: 100%;
+//     padding: 0.75rem;
+//     font-size: 1rem;
+// }
+
+// .btn-primary:hover {
+//     background-color: #2563eb;
+// }
+
+// .signup-link {
+//     text-align: center;
+//     margin-top: 1rem;
+// }
+
+// .signup-link a {
+//     color: #3b82f6;
+//     text-decoration: none;
+// }
+
+// .signup-link a:hover {
+//     text-decoration: underline;
+// }
+
 body {
     background-color: #f8f9fa;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .signin-container {
     max-width: 400px;
+    width: 90%;
     margin: 0 auto;
     padding: 2rem;
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
 }
 
 .signin-container h2 {
     margin-bottom: 1.5rem;
     font-weight: 700;
     color: #3b82f6;
+    text-align: center;
 }
 
 .signin-container img {
-    width: 17rem;
-    margin-left: 2rem;
+    width: 100%;
+    max-width: 17rem;
+    display: block;
+    margin: 0 auto 1.5rem auto;
+    height: auto;
+    object-fit: contain;
 }
 
 .form-control:focus {
@@ -52,4 +122,18 @@ body {
 
 .signup-link a:hover {
     text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .signin-container {
+        max-width: 100%;
+        padding: 1rem;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .signin-container img {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
 }
