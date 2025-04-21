@@ -20,7 +20,7 @@ body {
 
 .signin-container img {
     width: 17rem;
-    margin: 0 auto 1.5rem auto;
+    display: block;
 }
 
 .form-control:focus {
@@ -52,4 +52,22 @@ body {
 
 .signup-link a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 2000px) {
+    .logo-image {
+        margin-left: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-image {
+        margin-left: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-image {
+        margin-left: 0.9rem;
+    }
 }
